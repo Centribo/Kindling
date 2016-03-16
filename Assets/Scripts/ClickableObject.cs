@@ -1,5 +1,11 @@
 ﻿using UnityEngine;
+using UnityEngine.EventSystems;
 using System.Collections;
+
+[RequireComponent (typeof (MeshFilter))]
+[RequireComponent (typeof (Collider))]
+[RequireComponent (typeof (MeshRenderer))]
+[RequireComponent (typeof (EventTrigger))]
 
 public class ClickableObject : MonoBehaviour {
 

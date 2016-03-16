@@ -3,6 +3,21 @@ using System.Collections;
 
 public class PlayerController : MonoBehaviour {
 
+	public static PlayerController instance = null;
+	public static PlayerController Instance { //Singleton pattern instance
+		get { //Getter
+			if(instance == null){ //If its null,
+				instance = (PlayerController)FindObjectOfType(typeof(PlayerController)); //Find it
+			}
+			return instance; //Return it
+		}
+	}
+
+	//Script references, to be linked in Unity Editor
+	public CardboardHead cardboardHead;
+
+	//Controllable variables
+	public float height; //The height of the player
 	public float speed; //How fast we should move, in units/second
 
 	// Use this for initialization
@@ -11,6 +26,7 @@ public class PlayerController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+		HandleInput();
 		HandleMovement();
 	}
 
@@ -26,6 +42,15 @@ public class PlayerController : MonoBehaviour {
 		isMoving = true; //And now, we're ready to move!
 	}
 
+	bool isMovingToInteract; //If we are moving to an object that we want to interact with
+	InteractableObject interactingObject; //What object we're trying to interact with
+
+	public void InteractWithObject(InteractableObject io){ //Moves player to given object's interact location, then interacts with it
+		isMovingToInteract = true; //We're not moving towards the given object
+		interactingObject = io; //Set the object we're going to interact with
+		MoveToLocation(io.transform.position + io.interactLocation + new Vector3(0, height, 0)); //Move to that object
+	}
+
 	void HandleMovement(){ //Handles movement from initalPos to moveTarget
 		if(isMoving){ //If we're moving
 			// % Journey complete = 1 - ((Distance from our pos to target - speed * time elapsed this frame) / distance from initial pos to target);
@@ -34,6 +59,21 @@ public class PlayerController : MonoBehaviour {
 			if(Vector3.Distance(transform.position, moveTarget) <= 0.01f){ //If we're close enough to our target position
 				transform.position = moveTarget; //clip position to that target
 				isMoving = false; //We're done moving
+				if(isMovingToInteract){ //If we are moving to an object that we want to interact with aswell
+					isMovingToInteract = false;
+					interactingObject.Interact(); //Interact with it
+					interactingObject = null;
+				}
+			}
+		}
+	}
+
+	void HandleInput(){
+		if(Cardboard.SDK.Triggered && !isMoving){ //If the player clicked the button this frame
+			RaycastHit targetHit;
+			//Check the raycast what they are looking at, and see if we can move there, if we can:
+			if(Physics.Raycast(cardboardHead.Gaze.origin, cardboardHead.Gaze.direction, out targetHit) && (targetHit.transform.tag == "Floor" || targetHit.transform.tag == "Ground")){
+				MoveToLocation(targetHit.point + new Vector3(0, height, 0)); //Move there
 			}
 		}
 	}
