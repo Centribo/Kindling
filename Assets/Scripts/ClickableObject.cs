@@ -12,10 +12,13 @@ public class ClickableObject : MonoBehaviour {
 	bool isGazedAt = false;
 	Color originalColor;
 
+	void Awake(){
+		originalColor = GetComponent<Renderer>().material.color; //Set our default colour
+	}
+
 	// Use this for initialization
 	void Start () {
-		originalColor = GetComponent<Renderer>().material.color;
-		UpdateClickVisuals();
+	
 	}
 	
 	// Update is called once per frame

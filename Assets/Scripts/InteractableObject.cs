@@ -1,5 +1,9 @@
 ﻿using UnityEngine;
+
+#if UNITY_EDITOR
 using UnityEditor;
+#endif
+
 using System.Collections;
 
 public class InteractableObject : ClickableObject {
@@ -33,6 +37,7 @@ public class InteractableObject : ClickableObject {
 	}
 }
 
+#if UNITY_EDITOR
 //For drawing UI:
 [CustomEditor(typeof(InteractableObject))]
 public class testedi : Editor {
@@ -45,4 +50,4 @@ public class testedi : Editor {
 		}
 	}
 }
-
+#endif
