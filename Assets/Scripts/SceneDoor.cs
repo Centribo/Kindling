@@ -6,8 +6,8 @@ using System.Collections;
 
 public class SceneDoor : InteractableObject {
 
-	public Object scene; //The scene this door opens to
 	public AudioClip doorClip; //The sound this door makes
+	public string sceneToLoad; //The name of scene this door opens to
 
 	// Use this for initialization
 	void Start () {
@@ -16,7 +16,6 @@ public class SceneDoor : InteractableObject {
 	
 	// Update is called once per frame
 	void Update () {
-	
 	}
 
 	public override void Interact(){
@@ -25,6 +24,7 @@ public class SceneDoor : InteractableObject {
 	}
 
 	public void LoadScene(){
-		SceneManager.LoadScene(scene.name);
+		
+		SceneManager.LoadScene(sceneToLoad);
 	}
 }
