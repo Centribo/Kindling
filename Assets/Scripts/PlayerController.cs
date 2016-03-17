@@ -13,12 +13,24 @@ public class PlayerController : MonoBehaviour {
 		}
 	}
 
-	//Script references, to be linked in Unity Editor
+	//Public variables:
+		//Script references, to be linked in Unity Editor
 	public CardboardHead cardboardHead;
 
-	//Controllable variables
+		//Controllable variables:
 	public float height; //The height of the player
 	public float speed; //How fast we should move, in units/second
+	public AudioClip walkingSound; //The sound to make when we're walking
+
+	//Private variables:
+		//References to components:
+	CardboardAudioSource cas;
+
+	void Awake(){
+		DontDestroyOnLoad(transform.gameObject); //Don't destroy us on loading new scenes
+		
+		cas = GetComponent<CardboardAudioSource>();
+	}
 
 	// Use this for initialization
 	void Start () {
@@ -39,6 +51,11 @@ public class PlayerController : MonoBehaviour {
 		initialPos = transform.position; //Set the inital pos
 		moveTarget = location; //Set where we wanna go
 		lerpPecentage = 0; //We just started movement, so we're 0% of the way there
+
+		//Audio:
+		cas.clip = walkingSound; //set the walking clip
+		cas.Play(); //Start making walking noises
+
 		isMoving = true; //And now, we're ready to move!
 	}
 
@@ -58,6 +75,7 @@ public class PlayerController : MonoBehaviour {
 			transform.position = Vector3.Lerp(initialPos, moveTarget, lerpPecentage); //Set our position dependent on lerp
 			if(Vector3.Distance(transform.position, moveTarget) <= 0.01f){ //If we're close enough to our target position
 				transform.position = moveTarget; //clip position to that target
+				cas.Stop(); //Stop making walking noises
 				isMoving = false; //We're done moving
 				if(isMovingToInteract){ //If we are moving to an object that we want to interact with aswell
 					isMovingToInteract = false;

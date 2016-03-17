@@ -45,6 +45,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 477560}
   - 114: {fileID: 11478936}
+  - 114: {fileID: 11453290}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -632,6 +633,31 @@ MonoBehaviour:
   vrModeOnly: 0
   clickTime: 0.1
   hotspot: {x: 0.5, y: 0.5}
+--- !u!114 &11453290
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 128066}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6dbca64e524ea44f9b26142ec59aca8a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  directivityAlpha: 0
+  directivitySharpness: 1
+  gainDb: 0
+  occlusionEnabled: 0
+  playOnAwake: 1
+  rolloffMode: 0
+  sourceClip: {fileID: 0}
+  sourceLoop: 0
+  sourceMute: 0
+  sourcePitch: 1
+  sourceVolume: 1
+  sourceMaxDistance: 500
+  sourceMinDistance: 0
+  hrtfEnabled: 1
 --- !u!114 &11456462
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -727,6 +753,7 @@ MonoBehaviour:
   cardboardHead: {fileID: 11457618}
   height: 3
   speed: 10
+  walkingSound: {fileID: 0}
 --- !u!114 &11486498
 MonoBehaviour:
   m_ObjectHideFlags: 1

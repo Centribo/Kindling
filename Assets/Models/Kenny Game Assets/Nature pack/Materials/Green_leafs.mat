@@ -102,7 +102,7 @@ Material:
       data:
         first:
           name: _Glossiness
-        second: 0.5
+        second: 1
       data:
         first:
           name: _BumpScale
@@ -129,7 +129,23 @@ Material:
         second: 0
       data:
         first:
+          name: _Lightmapping
+        second: 1
+      data:
+        first:
           name: _EmissionScaleUI
+        second: 0
+      data:
+        first:
+          name: _Outline
+        second: 0.005
+      data:
+        first:
+          name: _isBending
+        second: 0
+      data:
+        first:
+          name: _isOutlined
         second: 0
     m_Colors:
       data:
@@ -143,4 +159,12 @@ Material:
       data:
         first:
           name: _EmissionColorUI
+        second: {r: 1, g: 1, b: 1, a: 1}
+      data:
+        first:
+          name: _OutlineColor
+        second: {r: 1, g: 1, b: 1, a: 1}
+      data:
+        first:
+          name: _OutColor
         second: {r: 1, g: 1, b: 1, a: 1}

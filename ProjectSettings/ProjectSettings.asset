@@ -331,7 +331,9 @@ PlayerSettings:
   psmSplashimage: {fileID: 0}
   spritePackerPolicy: 
   scriptingDefineSymbols:
+    2: 4x4;Grass_Dirt
     4: 
+    7: 4x4;Grass_Dirt
   metroPackageName: Project-Sepia-Tea
   metroPackageVersion: 
   metroCertificatePath: 

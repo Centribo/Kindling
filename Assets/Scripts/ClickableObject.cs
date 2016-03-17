@@ -10,15 +10,13 @@ using System.Collections;
 public class ClickableObject : MonoBehaviour {
 
 	bool isGazedAt = false;
-	Color originalColor;
 
 	void Awake(){
-		originalColor = GetComponent<Renderer>().material.color; //Set our default colour
 	}
 
 	// Use this for initialization
 	void Start () {
-	
+		UpdateClickVisuals();
 	}
 	
 	// Update is called once per frame
@@ -43,6 +41,14 @@ public class ClickableObject : MonoBehaviour {
 	}
 
 	public virtual void UpdateClickVisuals(){
-		GetComponent<Renderer>().material.color = isGazedAt ? Color.yellow : originalColor;
+		Renderer r = GetComponent<Renderer>();
+		if(r != null){
+			if(isGazedAt){
+				r.material.SetFloat("_isOutlined", 1);	
+			} else {
+				r.material.SetFloat("_isOutlined", 0);
+			}
+			
+		}
 	}
 }
