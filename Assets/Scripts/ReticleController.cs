@@ -7,6 +7,7 @@ public class ReticleController : MonoBehaviour, ICardboardPointer {
 	public Sprite defaultReticle;
 	public Sprite walkReticle;
 	public Sprite doorReticle;
+	public Sprite pressReticle;
 
 	Image reticleImage;
 
@@ -43,18 +44,7 @@ public class ReticleController : MonoBehaviour, ICardboardPointer {
 	/// the user is looking at, and the intersectionPosition is the intersection
 	/// point of the ray sent from the camera on the object.
 	public void OnGazeStart(Camera camera, GameObject targetObject, Vector3 intersectionPosition){
-		switch(targetObject.tag){
-			case "Floor":
-			case "Ground":
-				reticleImage.sprite = walkReticle;
-			break;
-			case "Door":
-				reticleImage.sprite = doorReticle;
-			break;
-			default:
-				reticleImage.sprite = defaultReticle;
-			break;
-		}
+		UpdateVisuals(targetObject.tag);
 	}
 
 	/// Called every frame the user is still looking at a valid GameObject. This
@@ -64,18 +54,7 @@ public class ReticleController : MonoBehaviour, ICardboardPointer {
 	/// looking at, and the intersectionPosition is the intersection point of the
 	/// ray sent from the camera on the object.
 	public void OnGazeStay(Camera camera, GameObject targetObject, Vector3 intersectionPosition){
-		switch(targetObject.tag){
-			case "Floor":
-			case "Ground":
-				reticleImage.sprite = walkReticle;
-			break;
-			case "Door":
-				reticleImage.sprite = doorReticle;
-			break;
-			default:
-				reticleImage.sprite = defaultReticle;
-			break;
-		}
+		UpdateVisuals(targetObject.tag);
 	}
 
 	/// Called when the user's look no longer intersects an object previously
@@ -99,5 +78,23 @@ public class ReticleController : MonoBehaviour, ICardboardPointer {
 	/// the user releases the trigger.
 	public void OnGazeTriggerEnd(Camera camera){
 	
+	}
+
+	public void UpdateVisuals(string targetTag){
+		switch(targetTag){
+			case "Floor":
+			case "Ground":
+				reticleImage.sprite = walkReticle;
+			break;
+			case "Door":
+				reticleImage.sprite = doorReticle;
+			break;
+			case "Passcode Panel":
+				reticleImage.sprite = pressReticle;
+			break;
+			default:
+				reticleImage.sprite = defaultReticle;
+			break;
+		}
 	}
 }

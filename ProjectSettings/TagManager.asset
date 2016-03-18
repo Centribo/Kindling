@@ -9,6 +9,7 @@ TagManager:
   - ClickableObject
   - InteractableObject
   - Door
+  - Passcode Panel
   layers:
   - Default
   - TransparentFX
