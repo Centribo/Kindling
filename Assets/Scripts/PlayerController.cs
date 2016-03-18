@@ -16,6 +16,7 @@ public class PlayerController : MonoBehaviour {
 	//Public variables:
 		//Script references, to be linked in Unity Editor
 	public CardboardHead cardboardHead;
+	public PlayerUIController uiController;
 
 		//Controllable variables:
 	public float height; //The height of the player
@@ -31,7 +32,7 @@ public class PlayerController : MonoBehaviour {
 		
 		cas = GetComponent<CardboardAudioSource>();
 	}
-
+	
 	// Use this for initialization
 	void Start () {
 	}
