@@ -87,11 +87,14 @@ public class PlayerController : MonoBehaviour {
 	}
 
 	void HandleInput(){
-		if(Cardboard.SDK.Triggered && !isMoving){ //If the player clicked the button this frame
+		if(Cardboard.SDK.Triggered){ //If the player clicked the button this frame
 			RaycastHit targetHit;
 			//Check the raycast what they are looking at, and see if we can move there, if we can:
 			if(Physics.Raycast(cardboardHead.Gaze.origin, cardboardHead.Gaze.direction, out targetHit) && (targetHit.transform.tag == "Floor" || targetHit.transform.tag == "Ground")){
 				MoveToLocation(targetHit.point + new Vector3(0, height, 0)); //Move there
+			}
+			if(isMovingToInteract){
+				isMovingToInteract = false;
 			}
 		}
 	}

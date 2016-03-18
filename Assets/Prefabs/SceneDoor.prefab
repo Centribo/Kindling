@@ -17,7 +17,7 @@ GameObject:
   - 114: {fileID: 11480162}
   m_Layer: 0
   m_Name: SceneDoor
-  m_TagString: InteractableObject
+  m_TagString: Door
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -167,8 +167,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   interactLocation: {x: 1.03, y: -0.69, z: 0}
-  scene: {fileID: 102900000, guid: 4db6aace107da4e4ab35c5bff4296bf6, type: 3}
   doorClip: {fileID: 8300000, guid: d876a7550ff081d4d9420c1e0a757e17, type: 3}
+  sceneToLoad: 
 --- !u!114 &11480162
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -200,7 +200,11 @@ Prefab:
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
-    m_Modifications: []
+    m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: m_TagString
+      value: Door
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 156748}
