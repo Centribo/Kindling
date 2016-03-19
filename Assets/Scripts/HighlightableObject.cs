@@ -3,6 +3,7 @@ using System.Collections;
 
 public class HighlightableObject : MonoBehaviour {
 
+	[Range(0, 10)]
 	public float minDistance;
 	public string highlightText;
 	public ObjectHighlighter objectHighlighter;
@@ -20,5 +21,10 @@ public class HighlightableObject : MonoBehaviour {
 		} else if (distance >= minDistance && objectHighlighter != null){
 			Destroy(objectHighlighter.gameObject);
 		}
+	}
+
+	void OnDrawGizmosSelected(){
+		Gizmos.color = new Color(1, 1, 1, 0.5f);
+		Gizmos.DrawSphere(transform.position, minDistance);
 	}
 }

@@ -1,7 +1,14 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+[RequireComponent (typeof (CardboardAudioSource))]
+
 public class InspectableObject : MonoBehaviour {
+
+	public AudioClip pickupSound;
+	public AudioClip putDownSound;
+
+	CardboardAudioSource audioSource;
 
 	Vector3 originalPosition;
 	Quaternion originalRotation;
@@ -9,6 +16,11 @@ public class InspectableObject : MonoBehaviour {
 	Transform originalParent;
 
 	bool isBeingInspected;
+
+
+	void Awake(){
+		audioSource = GetComponent<CardboardAudioSource>();
+	}
 
 	// Use this for initialization
 	void Start () {
@@ -34,6 +46,9 @@ public class InspectableObject : MonoBehaviour {
 		originalScale = transform.localScale;
 		originalParent = transform.parent;
 
+		audioSource.clip = pickupSound;
+		audioSource.Play();
+
 		PlayerController.Instance.InspectObject(this);
 		isBeingInspected = true;
 	}
@@ -43,6 +58,9 @@ public class InspectableObject : MonoBehaviour {
 		transform.localPosition = originalPosition;
 		transform.localRotation = originalRotation;
 		transform.localScale = originalScale;
+
+		audioSource.clip = putDownSound;
+		audioSource.Play();
 		
 		PlayerController.Instance.StopInspecting();
 		isBeingInspected = false;
