@@ -13,8 +13,8 @@ GameObject:
   - 23: {fileID: 2312938}
   - 114: {fileID: 11409612}
   - 114: {fileID: 11476764}
-  - 114: {fileID: 11479284}
   - 114: {fileID: 11480162}
+  - 114: {fileID: 11479284}
   m_Layer: 0
   m_Name: SceneDoor
   m_TagString: Door
@@ -154,6 +154,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c731a8d35e9a5cd45b48b86ee9f37d6a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  does:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 11479284}
+        m_MethodName: OpenDoor
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
   interactLocation: {x: 1.03, y: -0.69, z: 0}
 --- !u!114 &11479284
 MonoBehaviour:
@@ -166,7 +182,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6787399a6826f4e47ab2fd51679d59a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  interactLocation: {x: 1.03, y: -0.69, z: 0}
   doorClip: {fileID: 8300000, guid: d876a7550ff081d4d9420c1e0a757e17, type: 3}
   sceneToLoad: 
 --- !u!114 &11480162
@@ -202,8 +217,24 @@ Prefab:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 0}
+      propertyPath: does.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
       propertyPath: m_TagString
       value: Door
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: does.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 11479284}
+    - target: {fileID: 0}
+      propertyPath: does.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OpenDoor
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: does.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

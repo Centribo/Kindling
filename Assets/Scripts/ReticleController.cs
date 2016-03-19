@@ -5,9 +5,11 @@ using System.Collections;
 public class ReticleController : MonoBehaviour, ICardboardPointer {
 
 	public Sprite defaultReticle;
+	public Sprite blankReticle;
 	public Sprite walkReticle;
 	public Sprite doorReticle;
 	public Sprite pressReticle;
+	public Sprite inspectReticle;
 
 	Image reticleImage;
 
@@ -82,6 +84,9 @@ public class ReticleController : MonoBehaviour, ICardboardPointer {
 
 	public void UpdateVisuals(string targetTag){
 		switch(targetTag){
+			case "Blank":
+				reticleImage.sprite = blankReticle;
+			break;
 			case "Floor":
 			case "Ground":
 				reticleImage.sprite = walkReticle;
@@ -91,6 +96,9 @@ public class ReticleController : MonoBehaviour, ICardboardPointer {
 			break;
 			case "Passcode Panel":
 				reticleImage.sprite = pressReticle;
+			break;
+			case "InspectableObject":
+				reticleImage.sprite = inspectReticle;
 			break;
 			default:
 				reticleImage.sprite = defaultReticle;

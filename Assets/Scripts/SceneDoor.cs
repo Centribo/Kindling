@@ -4,7 +4,7 @@ using System.Collections;
 
 [RequireComponent (typeof (CardboardAudioSource))]
 
-public class SceneDoor : InteractableObject {
+public class SceneDoor : MonoBehaviour {
 
 	public AudioClip doorClip; //The sound this door makes
 	public string sceneToLoad; //The name of scene this door opens to
@@ -18,7 +18,7 @@ public class SceneDoor : InteractableObject {
 	void Update () {
 	}
 
-	public override void Interact(){
+	public void OpenDoor(){
 		GetComponent<CardboardAudioSource>().Play();
 		Invoke("LoadScene", doorClip.length);
 	}

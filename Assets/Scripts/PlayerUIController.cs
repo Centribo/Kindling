@@ -17,7 +17,7 @@ public class PlayerUIController : MonoBehaviour {
 
 	public ObjectHighlighter HighlightObject(GameObject obj, string name){
 		GameObject highlighterGO = (GameObject) Instantiate(objectHighlighter);
-		highlighterGO.transform.parent = transform;
+		highlighterGO.transform.SetParent(transform);
 
 		RectTransform rt = highlighterGO.GetComponent<RectTransform>();
 		rt.anchoredPosition3D = new Vector3(0, 0.15f, 0);

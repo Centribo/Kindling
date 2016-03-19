@@ -25,15 +25,7 @@ public class InteractableObject : ClickableObject {
 	}
 
 	public virtual void Interact(){
-		InteractableObject[] ios = GetComponents<InteractableObject>(); //Get all scripts that are/derive from InteractableObject on this GameObject
-		foreach (InteractableObject io in ios){ //For each of them,
-			if(io.GetType().IsSubclassOf(typeof(InteractableObject)) && io != this){ //If we're looking at a subclass of this class,
-				io.Interact(); //Then call Interact() on that script
-			} else {
-				//Debug.Log("Your object does not have a class that derives from InteractableObject that overrides Interact()");
-				//Do nothing
-			}
-		}
+		does.Invoke();
 	}
 }
 

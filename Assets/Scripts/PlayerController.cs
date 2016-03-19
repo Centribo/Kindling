@@ -17,6 +17,7 @@ public class PlayerController : MonoBehaviour {
 		//Script references, to be linked in Unity Editor
 	public CardboardHead cardboardHead;
 	public PlayerUIController uiController;
+	public ReticleController reticleController;
 
 		//Controllable variables:
 	public float height; //The height of the player
@@ -40,6 +41,7 @@ public class PlayerController : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		HandleInput();
+		HandleInspection();
 		HandleMovement();
 	}
 
@@ -64,9 +66,58 @@ public class PlayerController : MonoBehaviour {
 	InteractableObject interactingObject; //What object we're trying to interact with
 
 	public void InteractWithObject(InteractableObject io){ //Moves player to given object's interact location, then interacts with it
-		isMovingToInteract = true; //We're not moving towards the given object
-		interactingObject = io; //Set the object we're going to interact with
-		MoveToLocation(io.transform.position + io.interactLocation + new Vector3(0, height, 0)); //Move to that object
+		if(!isInspecting){
+			isMovingToInteract = true; //We're not moving towards the given object
+			interactingObject = io; //Set the object we're going to interact with
+			MoveToLocation(io.transform.position + io.interactLocation + new Vector3(0, height, 0)); //Move to that object
+		} else {
+			io.Interact();
+		}
+	}
+
+	bool isInspecting = false; //Are we inspecting something right now?
+	Vector3 initialInspectOrientation; //Holds the orientation of the player's head once they start inspecting an item
+	InspectableObject inspectingObj; //What object we're inspecting
+
+	public void InspectObject(InspectableObject obj){
+		isMoving = false; //Stop movement
+		isMovingToInteract = false;
+		
+		//Move the object infront of our face
+		obj.transform.SetParent(cardboardHead.transform);
+		obj.transform.localPosition = new Vector3(0, 0, 1);
+
+		initialInspectOrientation = Cardboard.SDK.HeadPose.Orientation.eulerAngles; //Set our initial orientation
+		inspectingObj = obj; //Set the object we're inspecting
+		isInspecting = true; //And now we're inspecting!
+	}
+
+	public void StopInspecting(){
+		inspectingObj = null;
+		isInspecting = false;
+	}
+
+	void HandleInspection(){
+		if(isInspecting && inspectingObj != null){ //If we're inspecting an object, and that object isn't null
+			Vector3 orientationDelta = initialInspectOrientation - Cardboard.SDK.HeadPose.Orientation.eulerAngles;
+
+			float padding = 20;
+			float rotateSpeed = 50;
+
+			if(orientationDelta.x < -padding){
+				inspectingObj.transform.Rotate(Vector3.left * rotateSpeed * Time.deltaTime, Space.World);
+			} else if (orientationDelta.x > padding){
+				inspectingObj.transform.Rotate(Vector3.right * rotateSpeed * Time.deltaTime, Space.World);
+			}
+
+			if(orientationDelta.y < -padding){
+				inspectingObj.transform.Rotate(Vector3.down * rotateSpeed * Time.deltaTime, Space.World);
+			} else if (orientationDelta.y > padding){
+				inspectingObj.transform.Rotate(Vector3.up * rotateSpeed * Time.deltaTime, Space.World);
+			}
+
+			reticleController.UpdateVisuals("Blank");
+		}
 	}
 
 	void HandleMovement(){ //Handles movement from initalPos to moveTarget
