@@ -45,12 +45,12 @@ public class PlayerController : MonoBehaviour {
 		HandleMovement();
 	}
 
-	Vector3 initialPos; //The initial position we are in when MoveToLocation is called
+	Vector3 initialPos; //The initial position we are in when MoveToLocationRaw is called
 	Vector3 moveTarget; //Where we want to move to
 	float lerpPercentage; //How far we are along said movement bounded from [0, 1]
 	bool isMoving; //Are we moving right now?
 
-	public void MoveToLocation(Vector3 location){ //Moves player to given location at set speed
+	public void MoveToLocationRaw(Vector3 location){ //Moves player to given location at set speed
 		initialPos = transform.position; //Set the inital pos
 		moveTarget = location; //Set where we wanna go
 		lerpPercentage = 0; //We just started movement, so we're 0% of the way there
@@ -62,6 +62,10 @@ public class PlayerController : MonoBehaviour {
 		isMoving = true; //And now, we're ready to move!
 	}
 
+	public void MoveToLocation(Vector3 location){
+		MoveToLocationRaw(location + new Vector3(0, height, 0));
+	}
+
 	bool isMovingToInteract; //If we are moving to an object that we want to interact with
 	InteractableObject interactingObject; //What object we're trying to interact with
 
@@ -69,7 +73,7 @@ public class PlayerController : MonoBehaviour {
 		if(!isInspecting){
 			isMovingToInteract = true; //We're not moving towards the given object
 			interactingObject = io; //Set the object we're going to interact with
-			MoveToLocation(io.transform.position + io.interactLocation + new Vector3(0, height, 0)); //Move to that object
+			MoveToLocationRaw(io.transform.position + io.interactLocation + new Vector3(0, height, 0)); //Move to that object
 		} else {
 			io.Interact();
 		}
@@ -143,7 +147,7 @@ public class PlayerController : MonoBehaviour {
 			RaycastHit targetHit;
 			//Check the raycast what they are looking at, and see if we can move there, if we can:
 			if(Physics.Raycast(cardboardHead.Gaze.origin, cardboardHead.Gaze.direction, out targetHit) && (targetHit.transform.tag == "Floor" || targetHit.transform.tag == "Ground")){
-				MoveToLocation(targetHit.point + new Vector3(0, height, 0)); //Move there
+				MoveToLocationRaw(targetHit.point + new Vector3(0, height, 0)); //Move there
 			}
 			if(isMovingToInteract){
 				isMovingToInteract = false;
