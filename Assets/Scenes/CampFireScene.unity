@@ -220,7 +220,7 @@ MonoBehaviour:
   playOnAwake: 1
   rolloffMode: 0
   sourceClip: {fileID: 8300000, guid: 2a1b20a437846ee40ab30467d140bcdc, type: 3}
-  sourceLoop: 0
+  sourceLoop: 1
   sourceMute: 0
   sourcePitch: 1
   sourceVolume: 1
