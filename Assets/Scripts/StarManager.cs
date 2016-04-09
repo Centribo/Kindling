@@ -26,8 +26,7 @@ public class StarManager : MonoBehaviour {
 			if(spawnPosition.y < transform.position.y){
 				i--;
 			} else {
-				GameObject star = (GameObject) Instantiate(starPrefab, spawnPosition, Quaternion.identity);
-				star.transform.SetParent(transform);
+				SpawnStar(spawnPosition);
 			}
 			
 		}
@@ -45,6 +44,7 @@ public class StarManager : MonoBehaviour {
 
 	public void SpawnStar(Vector3 position){
 		GameObject star = (GameObject) Instantiate(starPrefab, position, Quaternion.identity);
+		star.transform.rotation = Random.rotation; //To give the illusion of random scales, since our stars are 2d planes, we just rotate them randomly
 		star.transform.SetParent(transform);
 	}
 }

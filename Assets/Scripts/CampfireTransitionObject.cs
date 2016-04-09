@@ -9,6 +9,8 @@ public class CampfireTransitionObject : MonoBehaviour {
 	public float maxWidth;
 	[Range(0, 1)]
 	public float rate;
+	[Range(0, 1)]
+	public float starPercentage; //What percent of vertices should become stars
 
 	LineRenderer lr;
 	Vector3[] vertices;
@@ -36,7 +38,9 @@ public class CampfireTransitionObject : MonoBehaviour {
 			pos.x *= transform.localScale.x;
 			pos.y *= transform.localScale.y;
 			pos.z *= transform.localScale.z;
-			StarManager.Instance.SpawnStar(transform.position + pos);
+			if(Random.value <= starPercentage){
+				StarManager.Instance.SpawnStar(transform.position + pos);	
+			}
 		}
 	}
 	

@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 
 public class PlayerController : MonoBehaviour {
@@ -18,8 +19,11 @@ public class PlayerController : MonoBehaviour {
 	public CardboardHead cardboardHead;
 	public PlayerUIController uiController;
 	public ReticleController reticleController;
+	public Image fadingImage;
+	public CardboardAudioListener cal;
 
 		//Controllable variables:
+	public float fadeRate; //How fast we should fade transitions
 	public float height; //The height of the player
 	public float speed; //How fast we should move, in units/second
 	public AudioClip walkingSound; //The sound to make when we're walking
@@ -35,6 +39,7 @@ public class PlayerController : MonoBehaviour {
 	
 	// Use this for initialization
 	void Start () {
+		Invoke("FadeIn", 3);
 	}
 	
 	// Update is called once per frame
@@ -42,6 +47,7 @@ public class PlayerController : MonoBehaviour {
 		HandleInput();
 		HandleInspection();
 		HandleMovement();
+		HandleFade();
 	}
 
 	Vector3 initialPos; //The initial position we are in when MoveToLocationRaw is called
@@ -98,6 +104,47 @@ public class PlayerController : MonoBehaviour {
 	public void StopInspecting(){
 		inspectingObj = null;
 		isInspecting = false;
+	}
+
+	public void SetFadeColour(Color c){
+		fadingImage.color = c;
+	}
+
+	int fadeState = 0; //0 = Not fading, -1 = fading out, 1 = fading in
+	public void FadeIn(){
+		fadeState = 1;
+	}
+
+	public void FadeOut(){
+		fadeState = -1;
+	}
+
+	void HandleFade(){
+		Color originalColor = fadingImage.color; //Get our current color
+		float audioGain;
+		float fadeTolerance = 0.01f; //When to just snap to fully transparent or opaque
+		if(fadeState == 1){ //If we're fading in
+			originalColor.a = 0; //Set our target color to be transparent
+			audioGain = 0; //Set our target audio level
+			cal.globalGainDb = Mathf.Lerp(cal.globalGainDb, audioGain, fadeRate * Time.deltaTime); //LERP!
+			fadingImage.color = Color.Lerp(fadingImage.color, originalColor, fadeRate * Time.deltaTime); 
+			if(fadingImage.color.a <= fadeTolerance){ //If we're within tolerance
+				cal.globalGainDb = 0; //Set it to be normal
+				fadingImage.color = originalColor; //Set it to be fully transparent
+				fadeState = 0; //We're not longer fading
+			}
+		} else if (fadeState == -1){ //Similar to above
+			originalColor.a = 1;
+			audioGain = -24.0f;
+			cal.globalGainDb = Mathf.Lerp(cal.globalGainDb, audioGain, fadeRate * Time.deltaTime);
+			fadingImage.color = Color.Lerp(fadingImage.color, originalColor, fadeRate * Time.deltaTime);
+			if(fadingImage.color.a >= 1 - fadeTolerance){
+				cal.globalGainDb = -24.0f;
+				fadingImage.color = originalColor;
+				fadeState = 0;
+			}
+		}
+		
 	}
 
 	void HandleInspection(){
