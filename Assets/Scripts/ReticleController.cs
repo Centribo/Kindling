@@ -95,6 +95,7 @@ public class ReticleController : MonoBehaviour, ICardboardPointer {
 				reticleImage.sprite = doorReticle;
 			break;
 			case "Passcode Panel":
+			case "ClickableObject":
 				reticleImage.sprite = pressReticle;
 			break;
 			case "InspectableObject":

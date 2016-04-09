@@ -9,21 +9,46 @@ ModelImporter:
     100002: Circle
     100004: Circle_001
     100006: Cube
+    100008: Car_Frame
+    100010: Wheel
+    100012: Wheel_001
+    100014: Wheel_002
+    100016: Wheel_003
     400000: //RootNode
     400002: Circle
     400004: Circle_001
     400006: Cube
+    400008: Car_Frame
+    400010: Wheel
+    400012: Wheel_001
+    400014: Wheel_002
+    400016: Wheel_003
     2300000: //RootNode
     2300002: Circle
     2300004: Circle_001
     2300006: Cube
+    2300008: Car_Frame
+    2300010: Wheel
+    2300012: Wheel_001
+    2300014: Wheel_002
+    2300016: Wheel_003
     3300000: //RootNode
     3300002: Circle
     3300004: Circle_001
     3300006: Cube
+    3300008: Car_Frame
+    3300010: Wheel
+    3300012: Wheel_001
+    3300014: Wheel_002
+    3300016: Wheel_003
     4300000: Cube
     4300002: Circle
     4300004: Circle_001
+    4300006: Car_Frame
+    4300008: Wheel
+    4300010: Wheel_001
+    4300012: Wheel_002
+    4300014: Wheel_003
     7400000: Default Take
     9500000: //RootNode
   materials:

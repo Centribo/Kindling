@@ -30,7 +30,6 @@ public class PlayerController : MonoBehaviour {
 
 	void Awake(){
 		DontDestroyOnLoad(transform.gameObject); //Don't destroy us on loading new scenes
-		
 		cas = GetComponent<CardboardAudioSource>();
 	}
 	
