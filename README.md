@@ -1,12 +1,9 @@
-# Project-Sepia-Tea
-Google Cardboard
+![Example](Assets/Graphics/Kindling_Logo.png?raw=true "Logo")
+#### A short game VR based on a campfire and human connections.
 
-# TODO:
+# Main Credits:
+### Adam Leung (www.centribo.com)
+Created for Global Archiact Jam 2016
 
-Make a better system for inspectable items
-
-Finish tutorial level
-
-Implement stairs, with reticle view and all
-
-Implement "vehicles" and rideable objects
+# Other thanks:
+### Kenny for some 3D assets (www.kenney.nl)
