@@ -2,12 +2,20 @@
 	"folders":
 	[
 		{
-			"path": "Assets/Scripts",
 			"file_exclude_patterns":
 			[
 				"*.dll",
 				"*.meta"
-			]
+			],
+			"path": "Assets\\Scripts"
+		},
+		{
+			"file_exclude_patterns":
+			[
+				"*.dll",
+				"*.meta"
+			],
+			"path": "Assets\\Dialogue"
 		}
 	],
 	"solution_file": "./Kindling.sln"

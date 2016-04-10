@@ -24,7 +24,6 @@ public class SceneDoor : MonoBehaviour {
 	}
 
 	public void LoadScene(){
-		
 		SceneManager.LoadScene(sceneToLoad);
 	}
 }

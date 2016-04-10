@@ -1,4 +1,6 @@
 ﻿using UnityEngine;
+using UnityEngine.EventSystems;
+using UnityEngine.Events;
 using System.Collections;
 
 [RequireComponent (typeof (LineRenderer))]
@@ -11,6 +13,8 @@ public class CampfireTransitionObject : MonoBehaviour {
 	public float rate;
 	[Range(0, 1)]
 	public float starPercentage; //What percent of vertices should become stars
+
+	public UnityEvent does;
 
 	LineRenderer lr;
 	Vector3[] vertices;
@@ -57,6 +61,8 @@ public class CampfireTransitionObject : MonoBehaviour {
 			}
 			if(j < vertices.Length){
 				j++;
+			} else {
+				j = vertices.Length;
 			}
 
 			if(width >= maxWidth){
@@ -64,9 +70,17 @@ public class CampfireTransitionObject : MonoBehaviour {
 				lr.SetWidth(width, width);
 			}
 			if(width >= maxWidth && j == vertices.Length){
-				isTranitioning = false;
+				Plane[] planes = GeometryUtility.CalculateFrustumPlanes(Camera.main);
+				if (GeometryUtility.TestPlanesAABB(planes , GetComponent<Collider>().bounds)){
+					isTranitioning = false;
+					Invoke("StartNextScene", 1);
+				}
 			}
 		}
+	}
+
+	public void StartNextScene(){
+		does.Invoke();
 	}
 
 	public void StartTransition(){

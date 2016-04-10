@@ -39,7 +39,7 @@ public class PlayerController : MonoBehaviour {
 	
 	// Use this for initialization
 	void Start () {
-		Invoke("FadeIn", 3);
+		Cardboard.SDK.Recenter();
 	}
 	
 	// Update is called once per frame
@@ -111,6 +111,15 @@ public class PlayerController : MonoBehaviour {
 	}
 
 	int fadeState = 0; //0 = Not fading, -1 = fading out, 1 = fading in
+	
+	public void FadeIn(float delay){
+		Invoke("FadeIn", delay);
+	}
+
+	public void FadeOut(float delay){
+		Invoke("FadeOut", delay);
+	}
+
 	public void FadeIn(){
 		fadeState = 1;
 	}
