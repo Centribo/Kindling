@@ -1,5 +1,5 @@
 ![Example](Assets/Graphics/Kindling_Logo.png?raw=true "Logo")
-#### A short game VR based on a campfire and human connections.
+#### A short VR Game based on a campfire and human connections.
 
 # Main Credits:
 ### Adam Leung (www.centribo.com)
