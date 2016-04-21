@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: 43d44582b08d0944e9f6abcbb1d99802
-timeCreated: 1458912412
+guid: 6348c7cd61373ee41a1193cf07f8fb6e
+timeCreated: 1461240650
 licenseType: Free
 ModelImporter:
   serializedVersion: 19
@@ -9,8 +9,7 @@ ModelImporter:
     400000: //RootNode
     2300000: //RootNode
     3300000: //RootNode
-    4300000: Plane
-    4300002: Mug
+    4300000: Sphere
     7400000: Default Take
     9500000: //RootNode
   materials:

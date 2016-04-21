@@ -1,16 +1,27 @@
 fileFormatVersion: 2
-guid: 43d44582b08d0944e9f6abcbb1d99802
-timeCreated: 1458912412
+guid: 71fc1ad359cc2f442a506b22051ea02a
+timeCreated: 1461235642
 licenseType: Free
 ModelImporter:
   serializedVersion: 19
   fileIDToRecycleName:
     100000: //RootNode
+    100002: Cube
+    100004: Cube_001
+    100006: Cube_002
     400000: //RootNode
-    2300000: //RootNode
-    3300000: //RootNode
-    4300000: Plane
-    4300002: Mug
+    400002: Cube
+    400004: Cube_001
+    400006: Cube_002
+    2300000: Cube
+    2300002: Cube_001
+    2300004: Cube_002
+    3300000: Cube
+    3300002: Cube_001
+    3300004: Cube_002
+    4300000: Cube_002
+    4300002: Cube_001
+    4300004: Cube
     7400000: Default Take
     9500000: //RootNode
   materials:
@@ -42,7 +53,7 @@ ModelImporter:
     addColliders: 0
     importBlendShapes: 1
     swapUVChannels: 0
-    generateSecondaryUV: 0
+    generateSecondaryUV: 1
     useFileUnits: 1
     optimizeMeshForGPU: 1
     keepQuads: 0

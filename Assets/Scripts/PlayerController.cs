@@ -48,6 +48,7 @@ public class PlayerController : MonoBehaviour {
 		HandleInspection();
 		HandleMovement();
 		HandleFade();
+		transform.Translate(Vector3.right * Time.deltaTime);
 	}
 
 	Vector3 initialPos; //The initial position we are in when MoveToLocationRaw is called
