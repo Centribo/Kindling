@@ -48,7 +48,6 @@ public class PlayerController : MonoBehaviour {
 		HandleInspection();
 		HandleMovement();
 		HandleFade();
-		transform.Translate(Vector3.right * Time.deltaTime);
 	}
 
 	Vector3 initialPos; //The initial position we are in when MoveToLocationRaw is called
@@ -96,7 +95,6 @@ public class PlayerController : MonoBehaviour {
 		//Move the object infront of our face
 		obj.transform.SetParent(cardboardHead.transform);
 		obj.transform.localPosition = new Vector3(0, 0, 1);
-
 		initialInspectOrientation = Cardboard.SDK.HeadPose.Orientation.eulerAngles; //Set our initial orientation
 		inspectingObj = obj; //Set the object we're inspecting
 		isInspecting = true; //And now we're inspecting!

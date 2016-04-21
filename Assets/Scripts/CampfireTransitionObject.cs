@@ -18,8 +18,6 @@ public class CampfireTransitionObject : MonoBehaviour {
 
 	LineRenderer lr;
 	Vector3[] vertices;
-	Renderer r;
-	Color originalColor;
 	float width = 0;
 	bool isTranitioning = false;
 
@@ -27,8 +25,6 @@ public class CampfireTransitionObject : MonoBehaviour {
 		Mesh mesh = GetComponent<MeshFilter>().mesh;
 		vertices = mesh.vertices;
 		lr = GetComponent<LineRenderer>();
-		r = GetComponent<Renderer>();
-		originalColor = r.material.color;
 		//lr.SetWidth(0, 0);
 	}
 

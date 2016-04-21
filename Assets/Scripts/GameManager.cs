@@ -92,6 +92,7 @@ public class GameManager : MonoBehaviour {
 			logoHolder.sprite = logos[logoIndex];
 			FadeLogoIn();
 		} else {
+			Cardboard.SDK.Recenter();
 			PlayerController.Instance.FadeIn();
 		}
 	}
