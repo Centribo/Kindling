@@ -931,7 +931,7 @@ Transform:
   - {fileID: 105054178}
   - {fileID: 959010797}
   m_Father: {fileID: 1258653358}
-  m_RootOrder: 2
+  m_RootOrder: 1
 --- !u!114 &240038429
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5048,7 +5048,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 1258653358}
+  m_Father: {fileID: 1527226352}
   m_RootOrder: 0
 --- !u!114 &872284152
 MonoBehaviour:
@@ -6902,7 +6902,6 @@ Transform:
   m_LocalPosition: {x: 0.669, y: 1.429, z: 1.664}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 872284151}
   - {fileID: 1378116217}
   - {fileID: 240038428}
   m_Father: {fileID: 0}
@@ -9277,7 +9276,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1258653358}
-  m_RootOrder: 1
+  m_RootOrder: 0
 --- !u!114 &1378116218
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9879,7 +9878,8 @@ Transform:
   m_LocalRotation: {x: 0, y: 1, z: 0, w: -0.00000016292068}
   m_LocalPosition: {x: 0.669, y: 1.429, z: 1.664}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 872284151}
   m_Father: {fileID: 0}
   m_RootOrder: 4
 --- !u!4 &1529465029 stripped
@@ -10798,17 +10798,6 @@ MonoBehaviour:
   does:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 773220187}
-        m_MethodName: FadeOut
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
       - m_Target: {fileID: 1379937351}
         m_MethodName: SetSceneToLoad
         m_Mode: 5

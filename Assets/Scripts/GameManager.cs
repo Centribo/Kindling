@@ -76,6 +76,7 @@ public class GameManager : MonoBehaviour {
 	public void LoadScene(){
 		state = States.LoadingScene;
 		SceneManager.LoadScene(sceneToLoad);
+		PlayerController.Instance.FadeIn();
 	}
 
 	public void FadeLogoIn(){

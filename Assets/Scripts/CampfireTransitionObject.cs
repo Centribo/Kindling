@@ -69,10 +69,15 @@ public class CampfireTransitionObject : MonoBehaviour {
 				Plane[] planes = GeometryUtility.CalculateFrustumPlanes(Camera.main);
 				if (GeometryUtility.TestPlanesAABB(planes , GetComponent<Collider>().bounds)){
 					isTranitioning = false;
-					Invoke("StartNextScene", 1);
+					Invoke("FadeOut", 2);
+					Invoke("StartNextScene", 3);
 				}
 			}
 		}
+	}
+
+	public void FadeOut(){
+		PlayerController.Instance.FadeOut();
 	}
 
 	public void StartNextScene(){
