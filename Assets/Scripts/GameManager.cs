@@ -93,6 +93,8 @@ public class GameManager : MonoBehaviour {
 			FadeLogoIn();
 		} else {
 			Cardboard.SDK.Recenter();
+			SetSceneToLoad("CampFireScene");
+			LoadScene(0);
 			PlayerController.Instance.FadeIn();
 		}
 	}

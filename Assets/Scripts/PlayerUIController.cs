@@ -15,16 +15,16 @@ public class PlayerUIController : MonoBehaviour {
 	
 	}
 
-	public ObjectHighlighter HighlightObject(GameObject obj, string name){
+	public ObjectHighlighter HighlightObject(Transform t, string name, Vector3 offset){
 		GameObject highlighterGO = (GameObject) Instantiate(objectHighlighter);
-		highlighterGO.transform.SetParent(transform);
+		//t.SetParent(transform);
 
 		RectTransform rt = highlighterGO.GetComponent<RectTransform>();
 		rt.anchoredPosition3D = new Vector3(0, 0.15f, 0);
 		rt.localEulerAngles = Vector3.zero;
 
 		ObjectHighlighter oh = highlighterGO.GetComponent<ObjectHighlighter>();
-		oh.SetObjectToHighlight(obj, name);
+		oh.SetObjectToHighlight(t.position + offset, name);
 
 		return oh;
 	}

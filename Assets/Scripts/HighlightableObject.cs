@@ -7,6 +7,7 @@ public class HighlightableObject : MonoBehaviour {
 	public float minDistance;
 	public string highlightText;
 	public ObjectHighlighter objectHighlighter;
+	public Vector3 offset;
 
 	// Use this for initialization
 	void Start () {
@@ -17,7 +18,7 @@ public class HighlightableObject : MonoBehaviour {
 	void Update () {
 		float distance = Vector3.Distance(PlayerController.Instance.transform.position, transform.position);
 		if(distance <= minDistance && objectHighlighter == null){
-			objectHighlighter = PlayerController.Instance.uiController.HighlightObject(gameObject, highlightText);
+			objectHighlighter = PlayerController.Instance.uiController.HighlightObject(transform, highlightText, offset);
 		} else if (distance >= minDistance && objectHighlighter != null){
 			Destroy(objectHighlighter.gameObject);
 		}

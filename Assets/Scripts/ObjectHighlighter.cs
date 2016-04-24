@@ -4,7 +4,7 @@ using System.Collections;
 
 public class ObjectHighlighter : MonoBehaviour {
 
-	public Transform transformToHighlight;
+	public Vector3 highlightPos;
 	public Text textBox;
 
 	LineRenderer lr;
@@ -20,14 +20,14 @@ public class ObjectHighlighter : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if(transformToHighlight != null){
+		if(highlightPos != null){
 			lr.SetPosition(0, transform.position);
-			lr.SetPosition(1, transformToHighlight.position);	
+			lr.SetPosition(1, highlightPos);	
 		}	
 	}
 
-	public void SetObjectToHighlight(GameObject go, string name){
-		transformToHighlight = go.transform;
+	public void SetObjectToHighlight(Vector3 p, string name){
+		highlightPos = p;
 		textBox.text = name;
 	}
 }
