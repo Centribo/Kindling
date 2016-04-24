@@ -7,3 +7,4 @@ Created for Global Archiact Jam 2016
 
 # Other thanks:
 ### Kenny for some 3D assets (www.kenney.nl)
+### PigArt for Low-Poly Human Character Model (http://www.blendswap.com/blends/view/71843) (CC-BY)
