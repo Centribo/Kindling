@@ -47,12 +47,10 @@ public class GameManager : MonoBehaviour {
 					if(spawnPoint != null){
 						PlayerController.Instance.transform.localPosition = spawnPoint.transform.localPosition;
 						PlayerController.Instance.transform.localRotation = spawnPoint.transform.localRotation;
-						shouldMoveOnSpawn = false;
+						PlayerController.Instance.FadeIn(2);
+						Cardboard.SDK.Recenter();
+						state = States.Playing;
 					}
-				} else {
-					PlayerController.Instance.FadeIn(2);
-					Cardboard.SDK.Recenter();
-					state = States.Playing;
 				}
 			break;
 		}
